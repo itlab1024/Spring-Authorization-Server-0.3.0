@@ -135,8 +135,33 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
+    /**
+     * 这是个Spring security 的过滤器链，默认会配置
+     * <p>
+     * OAuth2 Authorization endpoint
+     * <p>
+     * OAuth2 Token endpoint
+     * <p>
+     * OAuth2 Token Introspection endpoint
+     * <p>
+     * OAuth2 Token Revocation endpoint
+     * <p>
+     * OAuth2 Authorization Server Metadata endpoint
+     * <p>
+     * JWK Set endpoint
+     * <p>
+     * OpenID Connect 1.0 Provider Configuration endpoint
+     * <p>
+     * OpenID Connect 1.0 UserInfo endpoint
+     * 这些协议端点，只有配置了他才能够访问的到接口地址（类似mvc的controller）。
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     @Order(1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
@@ -153,6 +178,12 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /**
+     * 这个也是个Spring Security的过滤器链，用于Spring Security的身份认证。
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
@@ -168,6 +199,10 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /**
+     * 配置用户信息，或者配置用户数据来源，主要用于用户的检索。
+     * @return
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails userDetails = User.withDefaultPasswordEncoder()
@@ -179,6 +214,10 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(userDetails);
     }
 
+    /**
+     * oauth2 用于第三方认证，RegisteredClientRepository 主要用于管理第三方（每个第三方就是一个客户端）
+     * @return
+     */
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
@@ -199,6 +238,10 @@ public class SecurityConfig {
         return new InMemoryRegisteredClientRepository(registeredClient);
     }
 
+    /**
+     * 用于给access_token签名使用。
+     * @return
+     */
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
         KeyPair keyPair = generateRsaKey();
@@ -212,6 +255,10 @@ public class SecurityConfig {
         return new ImmutableJWKSet<>(jwkSet);
     }
 
+    /**
+     * 生成秘钥对，为jwkSource提供服务。
+     * @return
+     */
     private static KeyPair generateRsaKey() {
         KeyPair keyPair;
         try {
@@ -224,11 +271,16 @@ public class SecurityConfig {
         return keyPair;
     }
 
+    /**
+     * 配置Authorization Server实例
+     * @return
+     */
     @Bean
     public ProviderSettings providerSettings() {
         return ProviderSettings.builder().build();
     }
 }
+
 ```
 
 至此最小化项目完成，这就能够完成oauth2的授权。
