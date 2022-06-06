@@ -398,6 +398,8 @@ axia5-kuIIzO1D1eu1V_02KawWIkRydiZrDEPAtLhNlYC7kLeUazD_bh5UXGQVJj7W2gxC1zpQJuQ2D9
 
 # 配置
 
+## 默认配置
+
 之前已经通过最小配置，完成了一个`Spring Authorization Server`项目，本章学习下关于配置的内容。
 
 `Spring Authorization Server`还提供了一种实现最小配置的默认配置形式。就是通过`OAuth2AuthorizationServerConfiguration`这个类。
@@ -704,7 +706,7 @@ public class AuthorizationServerConfig {
 
 测试客户端调用。
 
-![客户端模式](/Users/shizhenchao/Library/Application Support/typora-user-images/image-20220604192515635.png)
+![客户端模式](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206061459615.png)
 
 授权码模式测试
 
