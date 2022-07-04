@@ -10,7 +10,7 @@ Spring Authorization Server 0.3.0
 
 # 说明
 
-`Spring Authorization Server` 遵循[Oauth2.1](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-05)和[OpenID Connect 1.0，它建立在`Spring Security`之上。
+`Spring Authorization Server` 遵循[Oauth2.1](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-05)和[OpenID Connect 1.0](https://openid.net/specs/openid-connect-core-1_0.html)，它建立在`Spring Security`之上。
 
 # 最小化项目
 
