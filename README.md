@@ -1130,7 +1130,7 @@ public OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer() {
 
 重启应用，我通过客户端模式获取token，并解码查看。
 
-![image-20220702212018505](/Users/itlab/Library/Application Support/typora-user-images/image-20220702212018505.png)
+![image-20220702212018505](https://raw.githubusercontent.com/itlab1024/picgo-images/main/202207051008999.png)
 
 
 
@@ -1147,7 +1147,19 @@ public OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer() {
 需要修改authorizationServerSecurityFilterChain为如下内容：
 
 ```
-
+authorizationServerConfigurer
+    .oidc(oidc -> {
+      oidc.userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint.userInfoMapper(oidcUserInfoAuthenticationContext -> {
+        OAuth2AccessToken accessToken = oidcUserInfoAuthenticationContext.getAccessToken();
+        Map<String, Object> claims  = new HashMap<>();
+        claims.put("url", "https://github.com/ITLab1024");
+        claims.put("accessToken", accessToken);
+        claims.put("sub", oidcUserInfoAuthenticationContext.getAuthorization().getPrincipalName());
+        return new OidcUserInfo(claims);
+      }));
+    }
+         );
+  http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
 
 
 @Bean
