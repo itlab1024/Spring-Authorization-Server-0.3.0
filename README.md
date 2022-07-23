@@ -4,7 +4,7 @@ Spring Authorization Server 0.3.0
 # 说点什么
 `Spring Security Oauth2`弃用，`spring-authorization-server`刚刚出来第一版的时候我曾尝鲜过，那时候新版Authorization Server 只有官方demo，还没有使用文档，今天打开Spring.io的时候发现官方的版本更新到了0.3.0，并且提供了说明文档。
 
-![Spring Authorization Server](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206032052015.png)
+![Spring Authorization Server](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231149399.png)
 
 所以打算根据文档尝试下。
 
@@ -293,17 +293,17 @@ public class SecurityConfig {
 
 > 需要注意的是`redirect_uri`必须是`RegisteredClient`实例设置的。
 
-![授权码模式登录界面](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206041338488.png)
+![授权码模式登录界面](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231150833.png)
 
 输入用户名(user)密码(password）后
 
-![授权界面](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206041340559.png)
+![授权界面](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231151478.png)
 
 
 
 提交后，会自动跳转到`redirect_uri`地址，并且地址会紧跟着`code`。
 
-![redirect_uri回调后携带code字段](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206041426391.png)
+![redirect_uri回调后携带code字段](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231151774.png)
 
 
 
@@ -319,11 +319,11 @@ axia5-kuIIzO1D1eu1V_02KawWIkRydiZrDEPAtLhNlYC7kLeUazD_bh5UXGQVJj7W2gxC1zpQJuQ2D9
 
 授权码获取token的请求地址是`oauth2/token`，post请求：
 
-![请求体](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206041427997.png)
+![请求体](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231151778.png)
 
 上线这个三个参数是必须的，并且要跟代码中设置完全一直，另外获取token要传递client_id和client_secret参数，默认不支持使用表单传递，要通过header传递。比如在postman中
 
-![通过header传递client_id和client_secret](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206041429370.png)
+![通过header传递client_id和client_secret](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231152534.png)
 
 其实上线的操作实际上就是在header中传递了一个header，key=Authorization， value是client_id:client_secret，然后使用base64加密的字符串,然后前面加上`Basic `(注意后面有空格)。对于我这个例子来说就是`Basic bWVzc2FnaW5nLWNsaWVudDpzZWNyZXQ=`
 
@@ -341,7 +341,7 @@ axia5-kuIIzO1D1eu1V_02KawWIkRydiZrDEPAtLhNlYC7kLeUazD_bh5UXGQVJj7W2gxC1zpQJuQ2D9
 
 #### 刷新token
 
-![刷新token请求方式](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206041437225.png)
+![刷新token请求方式](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231152083.png)
 
 结果是：
 
@@ -369,7 +369,7 @@ axia5-kuIIzO1D1eu1V_02KawWIkRydiZrDEPAtLhNlYC7kLeUazD_bh5UXGQVJj7W2gxC1zpQJuQ2D9
 
 #### 获取token
 
-![客户端模式获取access_token](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206041440053.png)
+![客户端模式获取access_token](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231152276.png)
 
 结果是：
 
@@ -706,19 +706,19 @@ public class AuthorizationServerConfig {
 
 测试客户端调用。
 
-![客户端模式](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206061459615.png)
+![客户端模式](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231152396.png)
 
 授权码模式测试
 
-![授权码模式](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206042117755.png)
+![授权码模式](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231152428.png)
 
 
 
-![获取code](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206042118989.png)
+![获取code](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231152090.png)
 
 
 
-![授权码模式-获取token](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202206042121444.png)
+![授权码模式-获取token](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231152412.png)
 
 授权码模式也没有问题。
 
@@ -1018,7 +1018,7 @@ authories:
 
 输入用户名密码（user, password）后，勾选scope，确认后，通过地址栏能或得code。
 
-![获取code](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207022040303.png)
+![获取code](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231153665.png)
 
 获取到的code是
 
@@ -1028,7 +1028,7 @@ ZPO_JhUNM69j46JqZIGTTE_fvyzdZ30irinvQEW1DwFBQmWKhrwX-3GhR0a1l6uRoo4au9P1xl8Y6ig8
 
 获取token
 
-![image-20220702204241459](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207022045640.png)
+![image-20220702204241459](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231153217.png)
 
 
 
@@ -1048,7 +1048,7 @@ ZPO_JhUNM69j46JqZIGTTE_fvyzdZ30irinvQEW1DwFBQmWKhrwX-3GhR0a1l6uRoo4au9P1xl8Y6ig8
 
 刷新token
 
-![image-20220702204341362](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207022044653.png)
+![image-20220702204341362](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231153292.png)
 
 结果是：
 
@@ -1068,7 +1068,7 @@ ZPO_JhUNM69j46JqZIGTTE_fvyzdZ30irinvQEW1DwFBQmWKhrwX-3GhR0a1l6uRoo4au9P1xl8Y6ig8
 
 获取token
 
-![image-20220702204502682](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207022045834.png)
+![image-20220702204502682](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231153242.png)
 
 结果是：
 
@@ -1089,7 +1089,7 @@ ZPO_JhUNM69j46JqZIGTTE_fvyzdZ30irinvQEW1DwFBQmWKhrwX-3GhR0a1l6uRoo4au9P1xl8Y6ig8
 
 将上面的jwt解码后结果如下：
 
-![image-20220702210738367](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207022107488.png)
+![image-20220702210738367](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231153032.png)
 
 接下来我们增加一个自定义header和claim.
 
@@ -1130,7 +1130,7 @@ public OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer() {
 
 重启应用，我通过客户端模式获取token，并解码查看。
 
-![image-20220702212018505](https://raw.githubusercontent.com/itlab1024/picgo-images/main/202207051008999.png)
+![image-20220702212018505](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231153546.png)
 
 
 
@@ -1201,7 +1201,7 @@ nngt651MwKjuKPK0NJfxOU6KHE6okJ8RK3P7fdyJuc2o_GXdaDTrQGnBYjabcH9Bj9sZR6mxlZuojhld
 
 通过token，获取OIDC的用户端点：
 
-![image-20220702214350843](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207022143989.png)
+![image-20220702214350843](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231153021.png)
 
 这里的sub就是用户的标志，当然也可以增加很多自定义信息。
 
@@ -1274,7 +1274,7 @@ public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity h
 
 ## 查看OpenID的配置
 
-![image-20220703213056662](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207032130136.png)
+![image-20220703213056662](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231154896.png)
 
 结果是：
 
@@ -1364,7 +1364,7 @@ public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity h
 
 请注意：
 
-![image-20220703213506592](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207032135742.png)
+![image-20220703213506592](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231154932.png)
 
 测试：
 
@@ -1372,7 +1372,7 @@ public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity h
 
 输入用户名密码后：
 
-![image-20220703214606816](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207032146955.png)
+![image-20220703214606816](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231154254.png)
 
 勾选scope，并提交，从地址栏中获取到code。
 
@@ -1382,7 +1382,7 @@ qdd5jgQxyfAlZELZr8kclamAaqkXlWxoEPa5h_7E0BbNLDkgfjDLnpo5SmPrFbZxZJVwO3KCMpmQD5D_
 
 获取accessToken
 
-![image-20220703214720168](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207032147304.png)
+![image-20220703214720168](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231154238.png)
 
 json结果是：
 
@@ -1400,7 +1400,7 @@ json结果是：
 
 通过获取的accessToken，POST请求`/connect/register`接口
 
-![请求参数](https://raw.githubusercontent.com/ITLab1024/picgo-images/main/202207032149540.png)
+![请求参数](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231154184.png)
 
 返回结果：
 
