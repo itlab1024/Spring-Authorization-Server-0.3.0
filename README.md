@@ -1,13 +1,3 @@
-# Spring-Authorization-Server-0.3.0
-Spring Authorization Server 0.3.0
-
-# 说点什么
-`Spring Security Oauth2`弃用，`spring-authorization-server`刚刚出来第一版的时候我曾尝鲜过，那时候新版Authorization Server 只有官方demo，还没有使用文档，今天打开Spring.io的时候发现官方的版本更新到了0.3.0，并且提供了说明文档。
-
-![Spring Authorization Server](https://itlab1024-1256529903.cos.ap-beijing.myqcloud.com/202207231149399.png)
-
-所以打算根据文档尝试下。
-
 # 说明
 
 `Spring Authorization Server` 遵循[Oauth2.1](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-05)和[OpenID Connect 1.0](https://openid.net/specs/openid-connect-core-1_0.html)，它建立在`Spring Security`之上。
